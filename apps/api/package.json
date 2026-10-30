@@ -1,0 +1,16 @@
+{
+  "name": "@bunny/api",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "node --watch src/server.js",
+    "start": "node src/server.js",
+    "build": "node --check src/server.js"
+  },
+  "dependencies": {
+    "@fastify/cors": "11.0.1",
+    "dotenv": "16.4.7",
+    "fastify": "5.2.1"
+  }
+}
