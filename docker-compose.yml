@@ -1,0 +1,25 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: bunny
+      POSTGRES_PASSWORD: bunny_dev_password
+      POSTGRES_DB: bunny
+    ports:
+      - "127.0.0.1:5432:5432"
+    volumes:
+      - bunny-postgres:/var/lib/postgresql/data
+    restart: unless-stopped
+
+  redis:
+    image: redis:7-alpine
+    command: ["redis-server", "--appendonly", "yes"]
+    ports:
+      - "127.0.0.1:6379:6379"
+    volumes:
+      - bunny-redis:/data
+    restart: unless-stopped
+
+volumes:
+  bunny-postgres:
+  bunny-redis:

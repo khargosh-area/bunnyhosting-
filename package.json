@@ -1,0 +1,17 @@
+{
+  "name": "bunny-hosting",
+  "private": true,
+  "version": "0.1.0",
+  "workspaces": [
+    "apps/api",
+    "apps/web"
+  ],
+  "scripts": {
+    "dev:api": "npm run dev --workspace @bunny/api",
+    "dev:web": "npm run dev --workspace @bunny/web",
+    "build": "npm run build --workspace @bunny/api && npm run build --workspace @bunny/web"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}
