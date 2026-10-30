@@ -179,7 +179,7 @@ export default function Home() {
 
               <section className="lower-grid">
                 <div className="panel-card servers-card">
-                  <div className="card-heading"><div><h3>Your servers</h3><p>Manage your Minecraft instances.</p></div><button className="text-button" onClick={() => selectNav('Servers')}>View all <span>→</span></button></div>
+                  <div className="card-heading"><div><h3>Your servers</h3><p>Manage your Minecraft instances.</p></div><div className="card-tools"><input className="server-search" value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search servers..." aria-label="Search servers" /><button className="text-button" onClick={() => selectNav('Servers')}>View all <span>→</span></button></div></div>
                   {apiError && <div className="inline-alert">API is not reachable. Showing no live server data.</div>}
                   {servers.length > 0 ? (
                     <div className="server-table">
