@@ -247,7 +247,7 @@ export default function Home() {
               <div className="template-grid">
                 {templatePresets.filter((item) => (templateFilter === 'All' || item.type === templateFilter) && (item.name + ' ' + item.software + ' ' + item.tags.join(' ')).toLowerCase().includes(templateSearch.toLowerCase())).map((item) => (
                   <article className="template-card" key={item.name}>
-                    <div className="template-card-top"><div className="template-art"><span>{item.type === 'Bedrock' ? 'B' : item.type === 'Proxy' ? '↗' : 'M'}</span></div><span className="template-type">{item.type}</span></div>
+                    <div className="template-card-top"><div className={`template-art template-art-${item.software.toLowerCase().replace(/[^a-z]+/g, '-')}`} aria-hidden="true"><span>{item.type === 'Bedrock' ? 'B' : item.type === 'Proxy' ? 'V' : item.software === 'Fabric' ? 'F' : item.software === 'Forge' ? 'F' : item.software === 'Purpur' ? 'P' : item.software === 'Vanilla' ? 'V' : 'M'}</span><i /><i /><i /></div><span className="template-type">{item.type}</span></div>
                     <h2>{item.name}</h2><p>{item.description}</p>
                     <div className="template-meta"><span>{item.software}</span><span>{item.memory} RAM preset</span></div>
                     <div className="template-tags">{item.tags.map((tag) => <span key={tag}>{tag}</span>)}</div>
