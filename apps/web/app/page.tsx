@@ -217,15 +217,15 @@ export default function Home() {
                   )}
                 </div>
 
-                <div className="panel-card activity-card">
-                  <div className="card-heading"><div><h3>Getting started</h3><p>Your launch checklist.</p></div><span className="check-count">0 / 4</span></div>
-                  <div className="checklist">
-                    <div className="check-item"><span className="check-circle done">✓</span><div><strong>Panel workspace created</strong><small>Your Bunny Hosting dashboard is ready.</small></div></div>
-                    <div className="check-item"><span className="check-circle">2</span><div><strong>Connect your first node</strong><small>Prepare a VPS and install the node agent.</small></div></div>
-                    <div className="check-item"><span className="check-circle">3</span><div><strong>Configure server limits</strong><small>Set memory, CPU and disk allocations.</small></div></div>
-                    <div className="check-item"><span className="check-circle">4</span><div><strong>Launch your first server</strong><small>Choose Java or Bedrock and go live.</small></div></div>
+                <div className="panel-card activity-card quick-actions-card">
+                  <div className="card-heading"><div><h3>Quick actions</h3><p>Your control shortcuts.</p></div><span className="quick-live"><i /> PANEL</span></div>
+                  <div className="quick-actions-grid">
+                    <button className="quick-action quick-action-primary" onClick={() => setShowNotice(true)}><span className="quick-action-icon">＋</span><span><strong>Create server</strong><small>Start a new world</small></span><b>↗</b></button>
+                    <button className="quick-action" onClick={() => selectNav('Servers')}><span className="quick-action-icon">▣</span><span><strong>All servers</strong><small>View instances</small></span><b>↗</b></button>
+                    <button className="quick-action" onClick={() => selectNav('Templates')}><span className="quick-action-icon">▤</span><span><strong>Browse templates</strong><small>Java, Bedrock & proxy</small></span><b>↗</b></button>
+                    <button className="quick-action" onClick={() => selectNav('Nodes')}><span className="quick-action-icon">⌘</span><span><strong>Manage nodes</strong><small>Infrastructure setup</small></span><b>↗</b></button>
                   </div>
-                  <div className="checklist-progress"><span /><span /><span /><span /></div>
+                  <div className="quick-action-foot"><span className="live-dot" /> Secure node connection required for provisioning</div>
                 </div>
               </section>
 
