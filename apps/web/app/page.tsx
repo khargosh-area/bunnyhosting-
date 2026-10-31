@@ -34,8 +34,8 @@ export default function Home() {
     async function load() {
       try {
         const [h, s] = await Promise.all([
-          fetch(\`\${API}/health\`, { cache: 'no-store' }),
-          fetch(\`\${API}/api/servers\`, { cache: 'no-store' })
+          fetch(`${API}/health`, { cache: 'no-store' }),
+          fetch(`${API}/api/servers`, { cache: 'no-store' })
         ]);
         if (!h.ok || !s.ok) throw new Error('API unavailable');
         const healthData = await h.json();
