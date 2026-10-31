@@ -12,6 +12,17 @@ The repository contains a responsive, dark-themed dashboard preview built with N
 - Server list with search
 - Getting-started checklist
 - Nodes, backups, users and settings roadmap screens
+- Server template gallery with Java, Bedrock and proxy presets, search and filters
+- Clear preview-state messaging; no fake provisioning actions
+
+### Design references and attribution
+- Obsidian Panel (MIT): feature inspiration for template presets, server icon handling, file tools, plugin discovery and scheduling. This repository implements its own UI and backend; it does not copy Obsidian Panel source files.
+- CCVaults / ccLeaf: Minecraft icon and texture reference library. The current dashboard links to the library; individual assets will only be bundled after confirming their reuse terms and attribution requirements.
+- Workspace sidebar and responsive mobile navigation
+- Overview cards for servers, nodes and API status
+- Server list with search
+- Getting-started checklist
+- Nodes, backups, users and settings roadmap screens
 - Clear preview-state messaging; no fake provisioning actions
 
 ### API
