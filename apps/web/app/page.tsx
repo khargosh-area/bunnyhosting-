@@ -6,9 +6,21 @@ type Health = { ok: boolean; name: string; version: string };
 type Server = { id: string; name: string; edition: string; software: string; status: string; address: string };
 
 const API = process.env.NEXT_PUBLIC_API_URL ?? 'http://localhost:4000';
+const templatePresets = [
+  { name: 'Paper Survival', type: 'Java', software: 'Paper', version: 'Latest stable', memory: '4 GB', description: 'A reliable vanilla-style SMP with plugin support.', tags: ['Survival', 'Plugins'] },
+  { name: 'Purpur Performance', type: 'Java', software: 'Purpur', version: 'Latest stable', memory: '4 GB', description: 'Extra gameplay controls and performance tuning for SMPs.', tags: ['Survival', 'Performance'] },
+  { name: 'Fabric Modded', type: 'Java', software: 'Fabric', version: 'Choose version', memory: '6 GB', description: 'A lightweight foundation for Fabric mods and modpacks.', tags: ['Modded', 'Mods'] },
+  { name: 'Forge Modpack', type: 'Java', software: 'Forge', version: 'Choose version', memory: '8 GB', description: 'A modded server profile for Forge-based packs.', tags: ['Modded', 'Mods'] },
+  { name: 'Velocity Network', type: 'Proxy', software: 'Velocity', version: 'Latest stable', memory: '2 GB', description: 'A proxy entry point for a multi-server network.', tags: ['Network', 'Proxy'] },
+  { name: 'Bedrock Dedicated', type: 'Bedrock', software: 'Bedrock Dedicated', version: 'Latest stable', memory: '2 GB', description: 'A dedicated server profile for Minecraft Bedrock players.', tags: ['Bedrock', 'Crossplay'] },
+  { name: 'Geyser Crossplay', type: 'Java', software: 'Paper + Geyser', version: 'Compatible versions', memory: '4 GB', description: 'A Java server profile prepared for Bedrock crossplay.', tags: ['Crossplay', 'Plugins'] },
+  { name: 'Vanilla Survival', type: 'Java', software: 'Vanilla', version: 'Latest stable', memory: '3 GB', description: 'A clean server profile without third-party plugins.', tags: ['Survival', 'Vanilla'] }
+];
+
 const navItems = [
   { label: 'Overview', icon: '◫', group: 'WORKSPACE' },
   { label: 'Servers', icon: '▣', group: 'WORKSPACE' },
+  { label: 'Templates', icon: '▤', group: 'WORKSPACE' },
   { label: 'Create server', icon: '＋', group: 'WORKSPACE' },
   { label: 'Nodes', icon: '⌘', group: 'INFRASTRUCTURE' },
   { label: 'Backups', icon: '◷', group: 'INFRASTRUCTURE' },
@@ -26,6 +38,8 @@ export default function Home() {
   const [apiError, setApiError] = useState(false);
   const [active, setActive] = useState('Overview');
   const [query, setQuery] = useState('');
+  const [templateSearch, setTemplateSearch] = useState('');
+  const [templateFilter, setTemplateFilter] = useState('All');
   const [showNotice, setShowNotice] = useState(false);
   const [mobileNav, setMobileNav] = useState(false);
 
@@ -217,6 +231,34 @@ export default function Home() {
 
               <section className="bottom-note"><div className="note-mark">✳</div><div><strong>You're viewing the Bunny Hosting preview</strong><p>Server provisioning, billing and node controls will activate after the secure infrastructure is connected.</p></div><span className="preview-label">DEVELOPMENT MODE</span></section>
             </>
+          ) : active === 'Templates' ? (
+            <section className="templates-page">
+              <div className="date-label">BUNNY HOSTING / SERVER PRESETS</div>
+              <div className="templates-heading">
+                <div><h1>Server templates<span className="heading-period">.</span></h1><p>Start with a sensible preset, then customise it for your world.</p></div>
+                <a className="template-source-link" href="https://github.com/ArtRuntime/Obsidian-Panel" target="_blank" rel="noreferrer">Inspired by Obsidian Panel ↗</a>
+              </div>
+              <div className="template-toolbar">
+                <input className="template-search" value={templateSearch} onChange={(event) => setTemplateSearch(event.target.value)} placeholder="Search templates..." aria-label="Search templates" />
+                <div className="template-filters">
+                  {['All', 'Java', 'Bedrock', 'Proxy'].map((filter) => <button key={filter} className={templateFilter === filter ? 'template-filter active' : 'template-filter'} onClick={() => setTemplateFilter(filter)}>{filter}</button>)}
+                </div>
+              </div>
+              <div className="template-grid">
+                {templatePresets.filter((item) => (templateFilter === 'All' || item.type === templateFilter) && (item.name + ' ' + item.software + ' ' + item.tags.join(' ')).toLowerCase().includes(templateSearch.toLowerCase())).map((item) => (
+                  <article className="template-card" key={item.name}>
+                    <div className="template-card-top"><div className="template-art"><span>{item.type === 'Bedrock' ? 'B' : item.type === 'Proxy' ? '↗' : 'M'}</span></div><span className="template-type">{item.type}</span></div>
+                    <h2>{item.name}</h2><p>{item.description}</p>
+                    <div className="template-meta"><span>{item.software}</span><span>{item.memory} RAM preset</span></div>
+                    <div className="template-tags">{item.tags.map((tag) => <span key={tag}>{tag}</span>)}</div>
+                    <button className="template-use" onClick={() => setShowNotice(true)}>Use template <span>→</span></button>
+                  </article>
+                ))}
+                {templatePresets.filter((item) => (templateFilter === 'All' || item.type === templateFilter) && (item.name + ' ' + item.software + ' ' + item.tags.join(' ')).toLowerCase().includes(templateSearch.toLowerCase())).length === 0 && <div className="template-empty">No templates match this search.</div>}
+              </div>
+              <div className="template-footnote"><span className="live-dot" /> Presets are configuration starting points. Server creation stays disabled until a secure node is connected.</div>
+              <div className="template-assets-link"><span>Need Minecraft item art?</span><a href="https://ccvaults.com/" target="_blank" rel="noreferrer">Browse CCVaults / ccLeaf icon library ↗</a></div>
+            </section>
           ) : (
             <section className="subpage">
               <div className="date-label">BUNNY HOSTING / WORKSPACE</div>
