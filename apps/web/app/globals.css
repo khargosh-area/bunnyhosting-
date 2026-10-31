@@ -54,3 +54,33 @@ html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text)
 .template-assets-link{display:flex;justify-content:space-between;gap:10px;margin-top:15px;padding:12px 2px;color:#7e8c83;font-size:9px}
 @media(max-width:1050px){.template-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:650px){.templates-heading{align-items:flex-start;flex-direction:column}.templates-heading h1{font-size:27px}.template-toolbar{align-items:stretch;flex-direction:column}.template-search{width:100%}.template-filters{justify-content:space-between}.template-filter{flex:1}.template-grid{grid-template-columns:1fr}.template-assets-link{align-items:flex-start;flex-direction:column}}
+
+/* Original Minecraft-GUI visual language, inspired by Minepanel's design direction.
+   No Minepanel source styles or assets are copied. */
+.app-shell{background-color:#090d09;background-image:linear-gradient(#9dff3f08 1px,transparent 1px),linear-gradient(90deg,#9dff3f08 1px,transparent 1px),radial-gradient(ellipse at 75% -18%,#263a1b 0,transparent 38%);background-size:28px 28px,28px 28px,auto}
+.sidebar{background:linear-gradient(180deg,#11170f 0%,#0b100b 100%);border-right-color:#34412d;box-shadow:inset -1px 0 #000}
+.brand-symbol{border-radius:5px;box-shadow:0 3px 0 #5d7e31,0 0 25px #9dff3f18}
+.workspace-switcher,.help-card,.panel-card,.metric-card,.coming-card{border-radius:7px;box-shadow:inset 0 1px #ffffff08,0 3px 0 #070a07}
+.nav-link{border-radius:4px}
+.nav-link.nav-active{background:#9dff3f17;box-shadow:inset 3px 0 #9dff3f}
+.nav-link.nav-active:before{display:none}
+.metric-card{border-color:#34412e;background:linear-gradient(145deg,#182018,#101610)}
+.panel-card{border-color:#34412e;background:linear-gradient(145deg,#151d15,#0e140f)}
+.hero-banner{border-radius:8px;border-color:#536b3d;box-shadow:inset 0 1px #ffffff10,0 4px 0 #080d08}
+.primary-button,.secondary-button,.hero-button{border-radius:4px}
+.templates-page{position:relative}
+.templates-page:before{content:'';position:absolute;inset:-18px -22px auto;height:320px;pointer-events:none;background:radial-gradient(ellipse at 50% 0%,#9dff3f0c,transparent 70%);z-index:0}
+.templates-heading,.template-toolbar,.template-grid,.template-footnote,.template-assets-link{position:relative;z-index:1}
+.template-card{border-radius:7px;border-color:#394a32;background:linear-gradient(145deg,#1a2419,#111810);box-shadow:inset 0 1px #ffffff0b,0 4px 0 #070b07}
+.template-card:hover{border-color:#9dff3f;transform:translateY(-2px);box-shadow:inset 0 1px #ffffff12,0 6px 0 #070b07,0 0 22px #9dff3f10}
+.template-art{position:relative;width:48px;height:48px;overflow:hidden;display:grid;place-items:center;border:2px solid #637d47;border-radius:4px;background-color:#273d22;background-image:linear-gradient(45deg,#314e28 25%,transparent 25%),linear-gradient(-45deg,#314e28 25%,transparent 25%),linear-gradient(45deg,transparent 75%,#182b18 75%),linear-gradient(-45deg,transparent 75%,#182b18 75%);background-size:12px 12px;background-position:0 0,0 6px,6px -6px,-6px 0;box-shadow:inset 0 0 0 3px #0a100a,0 3px 0 #080c08}
+.template-art span{position:relative;z-index:2;display:grid;place-items:center;width:25px;height:25px;border:1px solid #c4ff7a;background:#8ecb4c;color:#17230f;font:900 14px Georgia;box-shadow:2px 2px 0 #182b12}
+.template-art i{position:absolute;width:4px;height:4px;background:#c4ff7a;opacity:.8}
+.template-art i:nth-of-type(1){top:6px;right:7px}.template-art i:nth-of-type(2){bottom:6px;left:7px;opacity:.45}.template-art i:nth-of-type(3){top:7px;left:7px;opacity:.35}
+.template-type{border-radius:4px;border-color:#526a40;color:#c4ff7a;background:#9dff3f0b}
+.template-filter{border-radius:4px}
+.template-filter.active{box-shadow:inset 0 0 0 1px #9dff3f50}
+.template-use{border-radius:4px;box-shadow:0 2px 0 #080c08}
+.template-search{border-radius:4px}
+.template-footnote{border-radius:5px;background:#172117;border-color:#405236;box-shadow:inset 0 1px #ffffff08}
+@media(max-width:760px){.app-shell{background-size:22px 22px,22px 22px,auto}.templates-page:before{inset:-12px -8px auto}}
